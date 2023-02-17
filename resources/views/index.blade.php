@@ -11,6 +11,7 @@
         <li><a href="register">Register here</a></li>
         <li><a href="login">Login here</a></li>
         <li><a href="landing">Random word generator</a></li>
+        <li><a href="todo">Todo list</a></li>
     </ul>
 </body>
 </html>

@@ -28,4 +28,8 @@ Route::get('/login', function () {
     return view('login', ["users" => User::all()]);
 });
 
+Route::get('/todo', function () {
+   return view('todo');
+});
+
 Route::get('/landing', [DatabaseController::class, 'showLanding']);
