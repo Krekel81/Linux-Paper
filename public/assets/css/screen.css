@@ -1,4 +1,44 @@
+html, body{
+    height: 95%;
+    background-color: black;
+    color:white;
+    font-family:'Courier New', Courier, monospace;
+}
 .error
 {
     color:red;
+}
+
+h1{
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+form input{
+    margin-bottom: 1rem;
+}
+a{
+    text-decoration: none;
+    color:white;
+}
+a:hover{
+    text-decoration: underline;
+}
+form ::-webkit-input-placeholder
+{
+    opacity: 0.4;
 }
