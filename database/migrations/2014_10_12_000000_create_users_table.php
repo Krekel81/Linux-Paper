@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('password');
-            $table->rememberToken();
+            $table->boolean('loggedIn')->default(false);
+            $table->boolean('disabled')->default(false);
+            $table->integer('clicks')->default(0);
+            $table->json('history')->nullable();
             $table->timestamps();
         });
     }

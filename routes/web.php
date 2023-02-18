@@ -24,6 +24,7 @@ Route::get('/register', function () {
     return view('register', ["users" => User::all()]);
 });
 
+
 Route::get('/login', function () {
     return view('login', ["users" => User::all()]);
 });

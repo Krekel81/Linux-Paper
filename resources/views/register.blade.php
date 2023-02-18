@@ -10,11 +10,10 @@
     <h1>Create account</h1>
     <form method="POST" action="api/user">
         <label for="Name">Name:</label>
-        <input type="text" name="Name" placeholder="Fill in your name" required>
+        <input type="text" name="name" placeholder="Fill in your name" required>
         <label for="Password">Password:</label>
-        <input type="password" name="Password" placeholder="Fill in your password" required>
-        <input type="submit" value="Submit">
+        <input type="password" name="password" placeholder="Fill in your password" required>
+        <input type="submit" value="Submit" id="btnSubmit">
     </form>
-    
 </body>
 </html>

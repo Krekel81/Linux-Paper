@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
+use App\Models\User;
+use Illuminate\Http\Response;
 
 use Illuminate\Http\Request;
 
@@ -10,23 +13,45 @@ class UserController extends Controller
     function createUser(Request $request)
     {
         Log::info("Trying to create a new user");
-        echo "<p>Not yet implemented</p>";
+
+
+        $validator = Validator::make($request->all(), $this->getUserValidationRules());
+
+        if ($validator->fails()) {
+            return response()->json(["errors" => $validator->errors()], Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+        $user = new User;
+
+        $user->name = $request->name;
+        $user->password = $request->password;
+
+        $user->save();
+
+        $this->successfullyLoginUser($user);
+        return redirect()->route('landing');
+    }
+
+    function getUserValidationRules()
+    {
+        return [
+            'name' => 'required|unique:users|max:255',
+            'password' => 'required|max:255'
+        ];
     }
 
     function loginUser(Request $request)
     {
         Log::info("Trying to log a user in");
 
-        echo "<p>Not yet implemented</p>";
-
-        /*
-        
-        foreach ($users as $user) 
+        $users = User::all();
+        foreach ($users as $user)
         {
             $username = $user->name;
             $password = $user->password;
             if($_POST["name"] == $username)
             {
+
                 if(password_verify($_POST["password"], $password))
                 {
                     if($user->disabled)
@@ -45,7 +70,7 @@ class UserController extends Controller
                     $user->save();
                     header("Location: profile");
                     exit();
-                    
+
                 }
                 else {
                     echo "<p style='color:red;'>Your password is invalid</p>";
@@ -53,7 +78,13 @@ class UserController extends Controller
                 }
             }
         }
-        
-        */ 
+        echo "<p style='color:red;'>Account does not exist</p>";
+        exit();
+    }
+
+    function successfullyLoginUser(User $user)
+    {
+        $user->loggedIn = true;
+        $user->save();
     }
 }
