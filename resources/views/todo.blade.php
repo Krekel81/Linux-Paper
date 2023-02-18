@@ -8,8 +8,6 @@
 </head>
 <body>
     <ul>
-
-        <li>Encrypt password registered user</li>
         <li>User needs to be able to login</li>
         <li>User needs to be able to see his name on top of the screen</li>
         <li>User needs to be able to view his history of random words</li>

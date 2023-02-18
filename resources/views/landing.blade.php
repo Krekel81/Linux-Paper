@@ -7,9 +7,9 @@
     <title>Landing</title>
 </head>
 <body>
-    <h1>Welcome {user}!</h1>
+    <h1>Welcome { {{$user->name}} }!</h1>
     <p>Click on the button below to generate a random word</p>
-    
+
     <form method="GET">
         <button name="btnRandom">Click me</button>
     </form>
@@ -19,7 +19,7 @@
         $theword = $word[0]->word;
         echo "<p id='word'>$theword</p>";
     }
-    
+
     ?>
 </body>
 </html>

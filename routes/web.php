@@ -22,15 +22,15 @@ Route::get('/', function () {
 
 Route::get('/register', function () {
     return view('register', ["users" => User::all()]);
-});
+})->name('register');
 
 
 Route::get('/login', function () {
     return view('login', ["users" => User::all()]);
-});
+})->name('login');
 
 Route::get('/todo', function () {
    return view('todo');
-});
+})->name('todo');
 
-Route::get('/landing', [DatabaseController::class, 'showLanding']);
+Route::get('/landing', [DatabaseController::class, 'showLanding'])->name('landing');

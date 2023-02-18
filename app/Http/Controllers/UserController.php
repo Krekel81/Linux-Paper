@@ -59,35 +59,25 @@ class UserController extends Controller
                 {
                     if($user->disabled)
                     {
-                        echo "<p style='color:red;'>Your account is disabled!</p>";
-                        exit();
-                    }
-                    if($user->loggedIn)
-                    {
-                        echo "<p style='color:red;'>User is already logged in!</p>";
-                        exit();
+                        return redirect()->route('login',  ["message"=> "Your account is disabled!"]);
                     }
                     echo "<p style='color:green;'>You are logged in</p>";
-                    $_SESSION["username"] = $username;
-                    $user->loggedIn = true;
-                    $user->save();
-                    header("Location: profile");
-                    exit();
-
+                    $this->successfullyLoginUser($user);
+                    return redirect()->route('landing');
                 }
                 else {
-                    echo "<p style='color:red;'>Your password is invalid</p>";
-                    exit();
+                    return redirect()->route('login',  ["message"=> "Your password is invalid"]);
                 }
             }
         }
-        echo "<p style='color:red;'>Account does not exist</p>";
-        exit();
+        return redirect()->route('login',  ["message"=> "Account does not exist"]);
     }
 
     function successfullyLoginUser(User $user)
     {
+        session_start();
         $user->loggedIn = true;
+        $_SESSION["username"] = $user->name;
         $user->save();
     }
 }

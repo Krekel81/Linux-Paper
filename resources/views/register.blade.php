@@ -15,5 +15,6 @@
         <input type="password" name="password" placeholder="Fill in your password" required>
         <input type="submit" value="Submit" id="btnSubmit">
     </form>
+    <a href="login">Do you already have an account? Log in here</a>
 </body>
 </html>
