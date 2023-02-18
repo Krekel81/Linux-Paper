@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="assets/css/screen.css">
 </head>
 <body>
     <h1>Create account</h1>
@@ -16,5 +17,11 @@
         <input type="submit" value="Submit" id="btnSubmit">
     </form>
     <a href="login">Do you already have an account? Log in here</a>
+
+    <?php
+    if(isset($_GET["message"])){
+     echo "<p class='error'>". $_GET["message"] ."</p>";
+    }
+    ?>
 </body>
 </html>

@@ -18,8 +18,7 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), $this->getUserValidationRules());
 
         if ($validator->fails()) {
-
-            return response()->json(["errors" => $validator->errors()], Response::HTTP_UNPROCESSABLE_ENTITY);
+            return redirect()->route('register',  ["message"=> "Account already exists"]);
         }
 
         $user = new User;
