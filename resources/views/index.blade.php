@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>WordGenerator</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/index.css">
 </head>
 <body>
-    <ul>
-        <li><a href="register">Register here</a></li>
-        <li><a href="login">Login here</a></li>
-        <li><a href="landing">Random word generator</a></li>
-        <li><a href="todo">Todo list</a></li>
-    </ul>
+    <div>
+        <button><a href="login">Login</a></button>
+        <button><a href="register">Register</a></button>
+    </div>
 </body>
 </html>

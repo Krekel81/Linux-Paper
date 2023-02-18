@@ -8,8 +8,6 @@
 </head>
 <body>
     <ul>
-        <li>User needs to be able to login</li>
-        <li>User needs to be able to see his name on top of the screen</li>
         <li>User needs to be able to view his history of random words</li>
         <li>User needs to be able to view the amount of times he clicked</li>
         <li>Add words to db</li>
