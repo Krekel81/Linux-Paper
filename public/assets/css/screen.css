@@ -42,3 +42,11 @@ form ::-webkit-input-placeholder
 {
     opacity: 0.4;
 }
+button{
+    cursor: pointer;
+    border-radius: 2rem;
+}
+input[type=submit]{
+    cursor: pointer;
+    border-radius: 2rem;
+}

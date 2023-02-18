@@ -5,48 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing</title>
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/screen.css">
     <link rel="stylesheet" href="assets/css/landing.css">
 </head>
 <body>
-    <div id="left">
-        <h1>Welcome { {{ $user->name }}  }!</h1>
-        <p>Click on the button below to generate a random word</p>
-        <?php
-        echo "<p>You have clicked the button $user->clicks times</p>";
-        ?>
-        <div id="forms">
-            <form method="POST" action="api/clicked">
-                <button name="btnRandom">Click me</button>
-            </form>
-            <form method="POST" action="api/logout">
-                <button id="logout" name="btnLogOut">Log Out</button>
-            </form>
+    <div id="centerdiv">
+        <div id="intro">
+            <h1>Welcome {[ {{ $user->name }}  ]}</h1>
+            <?php
+            echo "<br><p style='text-align:center;'>You clicked the button $user->clicks times</p>";
+            ?>
+            <div id="forms">
+                <form method="POST" action="api/clicked">
+                    <button name="btnRandom">Click me</button>
+                </form>
+            </div>
         </div>
-        <?php
-        if(isset($word))
-        {
-            $theword = $word[0]->word;
-            echo "<p id='word'>$theword</p>";
-        }
-        ?>
+        <div id="list">
+            <table class="fixed_headers">
+                <thead>
+                <tr>
+                    <th>Word History</th>
+                </tr>
+                </thead>
+                <tbody>
+                @if (isset($history))
+                    @foreach ($history as $hist)
+                        <tr><td>{{ $hist->word }}</td></tr>
+                    @endforeach
+                @endif
+                </tbody>
+            </table>
+        </div>
     </div>
-    <div id="right">
-        <table class="fixed_headers">
-            <thead>
-              <tr>
-                <th>Word History</th>
-              </tr>
-            </thead>
-            <tbody>
-            @if (isset($history))
-                @foreach ($history as $hist)
-                    <tr><td>{{ $hist->word }}</td></tr>
-                @endforeach
-            @endif
-            </tbody>
-          </table>
-    </div>
-
+    <form method="POST" action="api/logout">
+        <button id="logout" name="btnLogOut">Log Out</button>
+    </form>
     <?php
     if (isset($_POST['btnLogOut'])) {
         $user->loggedIn = false;

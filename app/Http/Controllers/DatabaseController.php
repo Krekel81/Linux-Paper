@@ -28,6 +28,7 @@ class DatabaseController extends Controller
         if($user->clicks > 0)
         {
             $history = History::where('userId', $user->id)
+            ->orderByDesc('id')
             ->get();
 
             $word = History::where('userId', $user->id)

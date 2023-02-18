@@ -17,8 +17,8 @@ use App\Models\User;
 */
 
 Route::get('/', function () {
-    return view('index');
-})->name('index');
+    return redirect()->route('login');
+});
 
 Route::get('/register', function () {
     return view('register', ["users" => User::all()]);

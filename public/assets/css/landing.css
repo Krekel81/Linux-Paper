@@ -1,38 +1,51 @@
-form{
-    display: flex;
-    width: 20rem;
-    flex-direction: row;
-    justify-content: space-between;
-}
-button{
-    cursor: pointer;
-    border-radius: 2rem;
-}
-#logout{
-    background-color:red;
-    color:white;
-}
 
-
-body{
-    display: flex;
-}
-
-#right{
-    margin-top: 1.5rem;
-    text-align: center;
+table{
+    height: 1rem;
     overflow-y: scroll;
-    max-height: 20rem;
 }
-th
+table th
 {
-    background-color: black;
-    color:white;
+    font-weight: bold;
     position: sticky;
     top: 0;
+    background-color: white;
+    color:black;
 }
+button{
+    background-color: rgb(44, 44, 44);
+    color:white;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    width: 50%;
+}
+button:hover{
+    background-color: white;
+    color:black;
+}
+#logout{
+    width: 100%;
+    background-color: red;
+    color:white;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+#logout:hover{
 
-div#forms{
+    background-color:rgb(255, 78, 78);
+}
+form{
+    align-items: center;
+}
+#list{
     display: flex;
+    justify-content: center;
+    height: 15rem;
+    overflow-y: scroll;
+    margin: 0;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
 }
-
