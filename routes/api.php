@@ -26,3 +26,4 @@ Route::post('/user', [UserController::class, 'createUser']);
 
 Route::post('/loginUser', [UserController::class, 'loginUser']);
 Route::post('/clicked', [DatabaseController::class, 'clickedButton']);
+Route::post('/logout', [UserController::class, 'logOut']);

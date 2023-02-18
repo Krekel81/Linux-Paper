@@ -80,4 +80,18 @@ class UserController extends Controller
         $_SESSION["username"] = $user->name;
         $user->save();
     }
+
+    function logOut()
+    {
+        session_start();
+        if(!(isset($_SESSION["username"])))
+        {
+            return redirect()->route('login', ["message"=>"You are not logged in!"]);
+        }
+        $user = User::where("name", $_SESSION["username"])->first();
+        $user->loggedIn = false;
+        $user->save();
+
+        return redirect()->route('login');
+    }
 }

@@ -20,7 +20,6 @@ body{
 
 #right{
     margin-top: 1.5rem;
-    margin-left: 10rem;
     text-align: center;
     overflow-y: scroll;
     max-height: 20rem;
@@ -32,3 +31,8 @@ th
     position: sticky;
     top: 0;
 }
+
+div#forms{
+    display: flex;
+}
+

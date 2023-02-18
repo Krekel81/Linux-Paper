@@ -14,10 +14,14 @@
         <?php
         echo "<p>You have clicked the button $user->clicks times</p>";
         ?>
-        <form method="POST" action="api/clicked">
-            <button name="btnRandom">Click me</button>
-            <button id="logout" name="btnLogOut">Log Out</button>
-        </form>
+        <div id="forms">
+            <form method="POST" action="api/clicked">
+                <button name="btnRandom">Click me</button>
+            </form>
+            <form method="POST" action="api/logout">
+                <button id="logout" name="btnLogOut">Log Out</button>
+            </form>
+        </div>
         <?php
         if(isset($word))
         {
