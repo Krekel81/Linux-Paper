@@ -12,3 +12,23 @@ button{
     background-color:red;
     color:white;
 }
+
+
+body{
+    display: flex;
+}
+
+#right{
+    margin-top: 1.5rem;
+    margin-left: 10rem;
+    text-align: center;
+    overflow-y: scroll;
+    max-height: 20rem;
+}
+th
+{
+    background-color: black;
+    color:white;
+    position: sticky;
+    top: 0;
+}

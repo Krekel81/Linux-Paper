@@ -25,3 +25,4 @@ Route::get('/words', [DatabaseController::class, 'getWords']);
 Route::post('/user', [UserController::class, 'createUser']);
 
 Route::post('/loginUser', [UserController::class, 'loginUser']);
+Route::post('/clicked', [DatabaseController::class, 'clickedButton']);
