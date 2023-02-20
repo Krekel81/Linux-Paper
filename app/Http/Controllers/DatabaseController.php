@@ -19,12 +19,11 @@ class DatabaseController extends Controller
         }
 
         $user = User::where("name", $_SESSION["username"])->first();
-
-
-        if(!(isset($user->loggedIn)))
+        if(!($user->loggedIn))
         {
             return redirect()->route('login', ["message"=>"User is not logged in"]);
         }
+
         if($user->clicks > 0)
         {
             $history = History::where('userId', $user->id)

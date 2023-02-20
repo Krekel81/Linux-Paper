@@ -50,3 +50,18 @@ input[type=submit]{
     cursor: pointer;
     border-radius: 2rem;
 }
+input[type=submit]{
+    background-color: rgb(44, 44, 44);
+    color:white;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    width: 80%;
+    text-align: center;
+    margin: auto;
+}
+input:hover[type=submit]{
+    background-color: white;
+    color:black;
+}
