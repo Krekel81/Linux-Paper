@@ -77,4 +77,23 @@ class DatabaseController extends Controller
 
         return redirect()->route('landing');
     }
+
+
+    function showChat()
+    {
+        session_start();
+        if(!(isset($_SESSION["username"])))
+        {
+            return redirect()->route('login', ["message"=>"You are not logged in!"]);
+        }
+
+        $user = User::where("name", $_SESSION["username"])->first();
+        if(!($user->loggedIn))
+        {
+            return redirect()->route('login', ["message"=>"User is not logged in"]);
+        }
+
+
+        return view('chat', ["user" => $user, ]);
+    }
 }

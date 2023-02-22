@@ -33,4 +33,8 @@ Route::get('/todo', function () {
    return view('todo');
 })->name('todo');
 
+
 Route::get('/landing', [DatabaseController::class, 'showLanding'])->name('landing');
+
+
+Route::get('/chat', [DatabaseController::class, 'showChat'])->name('chat');
