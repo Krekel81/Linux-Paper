@@ -8,7 +8,6 @@
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/screen.css">
-    <link rel="stylesheet" href="assets/css/landing.css">
     <link rel="stylesheet" href="assets/css/chat.css">
 </head>
 <body>
@@ -43,6 +42,7 @@
     <form method="POST" action="api/logout">
         <button id="logout" name="btnLogOut">Log Out</button>
     </form>
+    <a href="landing">Wanna generate some random words? Click here</a>
     <?php
     if (isset($_POST['btnLogOut'])) {
         $user->loggedIn = false;

@@ -43,6 +43,7 @@
     <form method="POST" action="api/logout">
         <button id="logout" name="btnLogOut">Log Out</button>
     </form>
+    <a href="chat">Wanna chat with some friends? Click here</a>
     <?php
     if (isset($_POST['btnLogOut'])) {
         $user->loggedIn = false;
