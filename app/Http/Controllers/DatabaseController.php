@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Words;
 use App\Models\User;
+use App\Models\Chat;
 use App\Models\History;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 class DatabaseController extends Controller
 {
@@ -93,7 +95,49 @@ class DatabaseController extends Controller
             return redirect()->route('login', ["message"=>"User is not logged in"]);
         }
 
+        $chats = Chat::all();
 
-        return view('chat', ["user" => $user, ]);
+        return view('chat', ["user" => $user, "chats"=>$chats]);
+    }
+
+    function chat(Request $request)
+    {
+        Log::info("Trying to create new chat");
+
+
+        session_start();
+        if(!(isset($_SESSION["username"])))
+        {
+            return redirect()->route('login', ["message"=>"You are not logged in!"]);
+        }
+
+        $user = User::where("name", $_SESSION["username"])->first();
+        if(!($user->loggedIn))
+        {
+            return redirect()->route('login', ["message"=>"User is not logged in"]);
+        }
+
+
+        $validator = Validator::make($request->all(), $this->getUserValidationRules());
+
+        if ($validator->fails()) {
+            return redirect()->route('chat',  ["message"=> "Message too long"]);
+        }
+
+        $chat = new Chat();
+
+        $chat->username = $user->name;
+        $chat->sentence = $request->chat;
+
+        $chat->save();
+
+        return redirect()->route('chat');
+    }
+
+    function getUserValidationRules()
+    {
+        return [
+            'chat' => 'required|max:50'
+        ];
     }
 }

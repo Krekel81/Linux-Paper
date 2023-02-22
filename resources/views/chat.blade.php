@@ -9,35 +9,35 @@
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/screen.css">
     <link rel="stylesheet" href="assets/css/landing.css">
+    <link rel="stylesheet" href="assets/css/chat.css">
 </head>
 <body>
     <div id="centerdiv">
         <div id="intro">
             <h1>Welcome {[ {{ $user->name }}  ]}</h1>
-            <?php
-            echo "<br><p style='text-align:center;'>You clicked the button $user->clicks times</p>";
-            ?>
-            <div id="forms">
-                <form method="POST" action="api/clicked">
-                    <button name="btnRandom">Click me</button>
-                </form>
-            </div>
         </div>
         <div id="list">
-            <table class="fixed_headers">
-                <thead>
-                <tr>
-                    <th>ChatBox</th>
-                </tr>
-                </thead>
-                <tbody>
-                @if (isset($chats))
-                    @foreach ($chats as $chat)
-                        <tr><td>{{ $chat->sentence }}</td></tr>
-                    @endforeach
-                @endif
-                </tbody>
-            </table>
+
+                <table class="fixed_headers">
+                    <thead>
+                    <tr>
+                        <th>ChatBox</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @if (isset($chats))
+                        @foreach ($chats as $chat)
+                            <tr><td>{{ $chat->username }}: {{  $chat->sentence }}</td></tr>
+                        @endforeach
+                    @endif
+                    </tbody>
+
+
+                </table>
+                <form action="api/chat" method="POST">
+                    <input type="text" name="chat" maxlength="50" placeholder="Type text here">
+                    <input type="submit" value="Send">
+                </form>
         </div>
     </div>
     <form method="POST" action="api/logout">
