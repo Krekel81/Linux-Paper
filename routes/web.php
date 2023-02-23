@@ -38,3 +38,5 @@ Route::get('/landing', [DatabaseController::class, 'showLanding'])->name('landin
 
 
 Route::get('/chat', [DatabaseController::class, 'showChat'])->name('chat');
+
+Route::get('/get-new-chat', [DatabaseController::class, 'getNewChat'])->name('get-new-chat');

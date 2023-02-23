@@ -94,7 +94,6 @@ class DatabaseController extends Controller
         {
             return redirect()->route('login', ["message"=>"User is not logged in"]);
         }
-
         $chats = Chat::all();
 
         return view('chat', ["user" => $user, "chats"=>$chats]);
@@ -139,5 +138,40 @@ class DatabaseController extends Controller
         return [
             'chat' => 'required|max:50'
         ];
+    }
+
+    /*function checkIfChatIsAdded(Chat $lastChatId, User $user)
+    {
+        $newChats = Chat::where('id', '>', $lastChatId)->get();
+        Log::info("Running!");
+        if ($newChats->count() > 1) {
+            // Return the new chats as a JSON response
+            Log::info("New chat!");
+            $chats = Chat::all();
+            return view('chat', ["user" => $user, "chats"=>$chats]);
+        }
+
+
+        while (true) {
+            checkIfChatIsAdded($lastChatId, $user);
+            sleep(3);
+        }
+    }*/
+
+
+    function resetChats()
+    {
+        Chat::truncate();
+        return redirect()->route("landing");
+    }
+
+    public function getNewChat()
+    {
+        // Retrieve the new chat from the database here
+        // For example:
+        $newChat = Chat::latest()->first();
+        $chats = Chat::all();
+        // Return the HTML for the new chat
+        return ['chats' => $chats];
     }
 }

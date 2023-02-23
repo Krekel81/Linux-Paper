@@ -54,3 +54,31 @@ button:hover{
 form{
     align-items: center;
 }
+table {
+    font-size: 0.8rem;
+    width: 30rem;
+    overflow-x: auto;
+}
+table thead tr th{
+    width: 18rem;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+html{
+    margin-top: 2rem;
+}
+thead{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+@media only screen and (max-width: 1000px) {
+    table{
+        width: 18rem;
+    }
+
+  }

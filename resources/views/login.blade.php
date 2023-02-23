@@ -13,7 +13,7 @@
     <h1>Login</h1>
     <form method="POST" action="api/loginUser">
         <label for="Name">Name:</label>
-        <input type="text" name="name" required>
+        <input type="text" name="name" required maxlength="18">
         <label for="Password">Password:</label>
         <input type="password" name="password" required>
         <input type="submit" value="Login" id="btnSubmit">

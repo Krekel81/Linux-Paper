@@ -28,3 +28,5 @@ Route::post('/chat', [DatabaseController::class, 'chat']);
 Route::post('/loginUser', [UserController::class, 'loginUser']);
 Route::post('/clicked', [DatabaseController::class, 'clickedButton']);
 Route::post('/logout', [UserController::class, 'logOut']);
+
+Route::get('/resetAllChats', [DatabaseController::class, 'resetChats']);

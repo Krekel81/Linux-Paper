@@ -38,7 +38,7 @@ class UserController extends Controller
     function getUserValidationRules()
     {
         return [
-            'name' => 'required|unique:users|max:255',
+            'name' => 'required|unique:users|max:18',
             'password' => 'required|max:255'
         ];
     }

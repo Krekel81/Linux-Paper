@@ -9,6 +9,32 @@
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/screen.css">
     <link rel="stylesheet" href="assets/css/chat.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function getNewChat() {
+            $.ajax({
+                url: '{{ route("get-new-chat") }}',
+                type: 'GET',
+                success: function(response) {
+                    // Append the new chat HTML to the chat containerµ
+                    let html = '';
+                    const chats = response["chats"].reverse();
+
+                    chats.forEach(chat => {
+                        html+= "<tr class='chat' id='thechat'><td>" + chat["username"] + ": " + chat["sentence"] + "</td></tr>";
+                        console.log(chat["username"] + ": " + chat["sentence"]);
+                    });
+
+                    document.querySelector("#bodychat").innerHTML = html;
+                },
+                error: function(xhr, status, error) {
+                    // Handle error response here
+                }
+            });
+        }
+
+setInterval(() => getNewChat(), 2000);
+    </script>
 </head>
 <body>
     <div id="centerdiv">
@@ -23,10 +49,10 @@
                         <th>ChatBox</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="bodychat">
                     @if (isset($chats))
-                        @foreach ($chats as $chat)
-                            <tr><td>{{ $chat->username }}: {{  $chat->sentence }}</td></tr>
+                        @foreach ($chats->reverse() as $chat)
+                            <tr class="chat" id="thechat"><td>{{ $chat->username }}: {{  $chat->sentence }}</td></tr>
                         @endforeach
                     @endif
                     </tbody>
@@ -42,7 +68,7 @@
     <form method="POST" action="api/logout">
         <button id="logout" name="btnLogOut">Log Out</button>
     </form>
-    <a href="landing    ">Wanna generate some random words? Click here</a>
+    <a href="landing">Wanna generate some random words? Click here</a>
     <?php
     if (isset($_POST['btnLogOut'])) {
         $user->loggedIn = false;
