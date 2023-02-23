@@ -22,7 +22,6 @@
 
                     chats.forEach(chat => {
                         html+= "<tr class='chat' id='thechat'><td>" + chat["username"] + ": " + chat["sentence"] + "</td></tr>";
-                        console.log(chat["username"] + ": " + chat["sentence"]);
                     });
 
                     document.querySelector("#bodychat").innerHTML = html;
